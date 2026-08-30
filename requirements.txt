@@ -1,0 +1,14 @@
+torch==2.1.0
+torchaudio==2.1.0
+numpy==1.24.3
+scipy==1.11.0
+librosa==0.10.0
+soundfile==0.12.1
+pydub==0.25.1
+matplotlib==3.7.2
+tqdm==4.65.0
+pyyaml==6.0
+json5==0.9.14
+banquet-sep>=1.0.0
+crepe==0.0.15
+phon==0.3.0
