@@ -1,0 +1,49 @@
+# Synth Reverse Engineering Pipeline Configuration
+
+audio:
+  sample_rate: 44100
+  hop_length: 512
+  n_fft: 2048
+  n_mels: 128
+  chunk_duration: 10  # seconds, for processing long files
+
+source_separation:
+  model: "banquet"  # "banquet", "audiosep", "demucs"
+  device: "cuda"  # "cuda" or "cpu"
+  num_workers: 4
+
+pitch_detection:
+  model: "crepe"  # "crepe", "pyin"
+  viterbi: true
+  center: true
+  threshold: 0.1
+
+spectral_analysis:
+  n_harmonics: 8  # Track top N harmonics
+  harmonic_tolerance: 0.05  # 5% deviation from integer multiples
+  frame_size: 2048
+  overlap: 0.75
+
+parameter_estimation:
+  iterations: 100
+  learning_rate: 0.01
+  optimization_method: "lbfgs"  # "lbfgs", "adam"
+  convergence_threshold: 0.001
+
+synth_parameters:
+  n_oscillators: 3
+  n_lfo: 2
+  max_unison_voices: 7
+  enable_fm: true
+  enable_am: true
+  enable_ring_mod: true
+  enable_filter_sweep: true
+
+vital_output:
+  format: "vital_preset"  # "vital_preset", "vst3"
+  template_path: "templates/vital_default.json"
+  
+debug:
+  save_intermediates: true
+  plot_spectrograms: true
+  verbose: true
